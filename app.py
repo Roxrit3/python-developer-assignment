@@ -27,7 +27,7 @@ openphish_list = openphish_data.splitlines()
 print("URL List:", url_list)
 print("IP List:", ip_list)
 
-#propojení python kodu a postgreSQL
+#propojení python kodu a postgreSQL - vloží se údaje z naší databáze
 conn = psycopg2.connect(
     host="your_host",
     database="your_database",
@@ -45,6 +45,8 @@ for url in url_list:
 #vkládání IP adres do databáze
 for ip in ip_list:
     cursor.execute("INSERT INTO IPs (IP, source) VALUES (%s, %s)", (ip,))
+
+# v SQL jsou vytvořené 2 tabulky, URLs, IPs, každá obsahuje columns Id, source + url/ip
 
 #ukončení propojení
 cursor.close()
