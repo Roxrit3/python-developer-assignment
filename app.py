@@ -40,11 +40,11 @@ cursor = conn.cursor()
 
 #vkládní URL do databáze
 for url in url_list:
-    cursor.execute("INSERT INTO urls (url) VALUES (%s)", (url,))
+    cursor.execute("INSERT INTO URLs (URL, source) VALUES (%s, %s)", (url,))
 
 #vkládání IP adres do databáze
 for ip in ip_list:
-    cursor.execute("INSERT INTO ip_addresses (ip_address) VALUES (%s)", (ip,))
+    cursor.execute("INSERT INTO IPs (IP, source) VALUES (%s, %s)", (ip,))
 
 #ukončení propojení
 cursor.close()
